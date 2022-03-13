@@ -1,0 +1,70 @@
+.mail {
+    flex: 1;
+    background-color: whitesmoke;
+}
+
+/* targets the div that surrounds the mail icons */
+.mail-tools {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+/* targets the div for the left icons */
+/* also affects the right icons */
+.mail-tools-left {
+    display: flex;
+}
+
+/* affects the section underneath the tools
+   which contains the subject, title and message */
+.mail-body {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
+}
+
+/* targets the header which contains the title and subject*/
+.mail-body-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid whitesmoke;
+    padding: 20px;
+    position: relative;
+}
+
+/* affects the subject */
+.mail-body-header > h2 {
+    font-weight: 400;
+    margin-right: 200px;
+}
+
+/* affect the title, icon and time */
+.mail-body-header > p{ 
+    margin-left: 20px;
+}
+
+/* colours the icon */
+.mail-important {
+    color: #e8ab02 !important;
+}
+
+/* affects the message */
+.mail-message > p {
+    padding: 10px;
+    margin-right: 20px;
+    overflow-wrap: break-word;
+}
+
+/* affects the time */
+.mail-time {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    font-size: 12px;
+    color: gray;
+}

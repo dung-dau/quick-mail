@@ -1,0 +1,68 @@
+.header {
+    display: flex;
+    /* spaces items along the central horizontal line */
+    /* center means align along the central horizontal line 
+       with equal spacing on the top and bottom*/
+    align-items: center;
+
+    /* justify content is how you space containers in the single rectangular container */
+    /* space around means there is equal spacing around child elements except for the first
+       and last one 
+    */
+    justify-content: space-between;
+
+    /* creates the standard grey "hr" */
+    border-bottom: 1px solid whitesmoke;
+}
+
+/* affects the menu bar and the gmail icon */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* targets the gmail logo with text image */
+.header-left > img {
+    /* maintains the aspect ratio */
+    object-fit: contain;
+    height: 80px;
+    margin-left: 5px;
+}
+
+/* targets the search bar */
+.header-middle {
+    display: flex;
+    align-items: center;
+    /* gives responsiveness to the searchbar */
+    /* only works because the parent container(.header) 
+       has the display: flex property 
+    */
+    flex: 0.7;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+/* targets the MUI icons */
+.header-middle > .MuiSvgIcon-root {
+    color: grey;
+}
+
+.header-middle > input {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    background-color: whitesmoke;
+    /* removes the black border from the box when it is selected */
+    /* the outline portion of the property refers to the border outside 
+    of the border */
+    outline-width: 0;
+    font-size: medium;
+}
+
+.header-right {
+    /* The avatar wraps below the header if display is not set to flex */
+    display: flex;
+    /* prevents the avatar from touching the very right of the screen */
+    padding-right: 20px;
+}

@@ -1,0 +1,33 @@
+/* Affects any section component (so far it is just
+   the primary, social and promotions tabs) */
+
+/* applies to the div of all section components */
+.section {
+    display: flex;
+    align-items: center;
+    border-bottom-width: 2px;
+    padding: 15px;
+    min-width: 200px;
+    cursor: pointer;
+    color: gray;
+    border-width: 0 !important;
+}
+
+/* overrides the last 2 properties of the section div
+   if the selected class was passed in */
+.section--selected {
+    background-color: whitesmoke;
+    border-width: 3px !important;
+}
+
+/* same as above but when the user hovers over it */
+.section:hover {
+    background-color: whitesmoke;
+    border-width: 3px !important;
+}
+
+/* Affects the text (primary, social, etc) */
+.section > h4 {
+    font-size: 14px;
+    margin-left: 15px;
+}

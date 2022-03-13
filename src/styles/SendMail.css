@@ -1,0 +1,57 @@
+.send-mail {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    background-color: #404040;
+    width: 40%;
+    height: 40%;
+    max-width: 500px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid whitesmoke;
+    box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.24);
+}
+
+.send-mail-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.send-mail-header > h3 {
+    color: whitesmoke;
+    font-size: 13px;
+}
+
+.send-mail-send {
+    background-color: #3073ed !important;
+    text-transform: capitalize !important;
+    margin: 15px !important;
+    color: white !important;
+}
+
+.send-mail-close {
+    cursor: pointer;
+}
+
+.send-mail > form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.send-mail > form > input {
+    height: 30px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid whitesmoke;
+    outline: none;
+}
+
+.send-mail-message {
+    flex: 1;
+}

@@ -1,0 +1,32 @@
+/* affects everthing below the header and next
+   to the side bar (compose, inbox, etc) */
+.email-list {
+    flex: 1;
+    /* when there is more content inside the div than
+       what can fit inside the div itself, it'll be cut
+       off but you can scroll down to see the rest */
+    overflow: scroll;
+}
+
+/* affects the section with the icons just below the
+   header */
+.email-list-settings {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid whitesmoke;
+    background-color: white;
+    z-index: 999;
+    padding-right: 10px;
+}
+
+/* affects the primary, social and promotions icons */
+.email-list-sections {
+    position: sticky;
+    top: 0;
+    display: flex;
+    border-bottom: 1px solid whitesmoke;
+    background-color: white;
+    z-index: 999;
+}

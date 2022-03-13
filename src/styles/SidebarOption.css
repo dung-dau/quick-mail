@@ -1,0 +1,51 @@
+.sidebar-option {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 10px;
+
+    /* only rounds the corner squares on the right side */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    color: #818181;
+}
+
+/* responsible for the component turning red when
+   an option is selected 
+*/
+.sidebar-option:hover,
+.sidebar-option:hover > p,
+.sidebar-optionLhover > h3,
+.sidebar-option--active,
+.sidebar-option--active > p,
+.sidebar-option--active > h3 {
+    background-color: #fcecec;
+    color: #c04b37;
+    font-weight: 800 !important;
+}
+
+.sidebar-option > .MuiSvgIcon-root {
+    padding: 5px;
+}
+
+.sidebar-option > h3 {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* hides the number passed into the sidebar option component */
+.sidebar-option > p {
+    display: none;
+    font-weight: 300;
+}
+
+.sidebar-option--active > p {
+    display: inline !important;
+}
+
+.sidebar-option:hover > p {
+    display: inline;
+}

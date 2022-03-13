@@ -1,0 +1,62 @@
+/* affects the entire div */
+.email-row {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* when the div is hovered over */
+.email-row:hover {
+    border-top: 1px solide whitesmoke;
+    box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.24);
+}
+
+/* affects the 3 icons before the text */
+.email-row-options {
+    display: flex;
+}
+
+/* affects the subject and the gray description 
+   which is encased in h4 tags*/
+.email-row-message {
+    display: flex;
+    /* allows the icons to stay to the left and the
+       time to stay to the right */
+    flex: 0.8;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* affect the subject and the gray description */
+.email-row-message > h4 {
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    /* creates a trailing ellipses when the subject is too long */
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    padding-right: 4px;
+}
+
+/* affects the title */
+.email-row-title {
+    font-size: 13px;
+    flex: 0.3;
+}
+
+/* affect the time on the right */
+.email-row-time {
+    padding-right: 15px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* affects the description */
+.email-row-description {
+    font-weight: 400;
+    color: gray;
+    margin-left: 8px;
+}
