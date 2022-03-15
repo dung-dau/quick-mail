@@ -22,9 +22,10 @@ export const incrementAsync = createAsyncThunk(
 
 export const mailSlice = createSlice({
   name: 'mail',
+  // opens up the new message box when sendMessageIsOpen is set to
+  // true (when the compose button is hit)
   initialState: {
     sendMessageIsOpen: false,
-
   },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
