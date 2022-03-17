@@ -10,11 +10,13 @@ import Mail from './components/Mail';
 import SendMail from './components/SendMail';
 import { useSelector } from 'react-redux';
 import { selectSendMessageIsOpen } from './features/counter/mailSlice';
+import Login from './components/Login';
 
 function App() {
   const sendMessageIsOpen = useSelector(selectSendMessageIsOpen);
   return (
     <BrowserRouter>
+      <Login />
       <div className="App">
         <Header />
         <div className="app-body">
