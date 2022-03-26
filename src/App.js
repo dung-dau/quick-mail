@@ -1,33 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EmailList from './components/EmailList';
 import Mail from './components/Mail';
 import SendMail from './components/SendMail';
 import { useSelector } from 'react-redux';
-import { selectSendMessageIsOpen } from './features/counter/mailSlice';
+import { selectSendMessageIsOpen } from './features/mailSlice';
+import { selectUser } from './features/userSlice';
 import Login from './components/Login';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { auth } from './firebase';
+import { login } from './features/userSlice';
 
 function App() {
   const sendMessageIsOpen = useSelector(selectSendMessageIsOpen);
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if(user) {
+        //user is logged in
+        dispatch(login({
+          displayName: user.displayName,
+          email: user.email,
+          photoUrl: user.photoURL,
+        }))
+      }
+    })
+  }, [])
   return (
     <BrowserRouter>
-      <Login />
-      <div className="App">
-        <Header />
-        <div className="app-body">
-          <Sidebar />
-          <Routes>
-            <Route path='/' element={<EmailList />}/>
-            <Route path='/mail' element={<Mail />} />
-          </Routes>
+      {!user ? (
+        <Login />
+      ): (
+        <div className="App">
+          <Header />
+          <div className="app-body">
+            <Sidebar />
+            <Routes>
+              <Route path='/' element={<EmailList />}/>
+              <Route path='/mail' element={<Mail />} />
+            </Routes>
+          </div>
+          {sendMessageIsOpen && <SendMail />}
         </div>
-        {sendMessageIsOpen && <SendMail />}
-      </div>
+      )}
     </BrowserRouter>
   );
 }

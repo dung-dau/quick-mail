@@ -12,6 +12,9 @@ import {
 } from "react-router-dom";
 import Mail from './components/Mail';
 
+//TODO: Dynamically generate the content when 
+// mail is opened in the inbox
+
 
 ReactDOM.render(
   <React.StrictMode>

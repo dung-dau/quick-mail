@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/EmailList.css';
 import { Checkbox, IconButton } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -13,8 +13,20 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Section from './Section';
 import EmailRow from './EmailRow';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebase';
 
 function EmailList() {
+  const [emails, setEmails] = useState([]);
+  const colRef = collection(db, 'emails');
+
+  useEffect(() => {
+    const q = query(colRef, orderBy('timestamp', 'desc'));
+    onSnapshot(q, (snapshot) => setEmails(snapshot.docs.map((doc) => ({
+      id: doc.id,
+      data: doc.data(),
+    }))))
+  }, [])
   return (
     <div className='email-list'>
       <div className="email-list-settings">
@@ -49,17 +61,31 @@ function EmailList() {
       </div>
       {/* Primary, Social and Promotions section */}
       <div className="email-list-sections">
-        <Section Icon={InboxIcon} title='Primary' color='red' selected />
-        <Section Icon={PeopleIcon} title='Social' color='#1A73E8' />
-        <Section Icon={LocalOfferIcon} title='Promotions' color='green' />
+        <Section Icon={InboxIcon} 
+                 title='Primary' 
+                 color='red' 
+                 selected
+        />
+        <Section Icon={PeopleIcon} 
+                 title='Social' 
+                 color='#1A73E8' 
+        />
+        <Section Icon={LocalOfferIcon} 
+                 title='Promotions' 
+                 color='green' 
+        />
       </div>
       <div className="email-list-list">
-        <EmailRow
-          title='Twitch'
-          subject='Hello'
-          description='testing'
-          time='10pm'
-        />
+        {emails.map(({id, data: { to, subject, message, timestamp }}) => (
+          <EmailRow 
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toDateString()}
+          />
+        ))}
       </div>
     </div>
   )

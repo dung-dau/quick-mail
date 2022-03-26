@@ -1,61 +1,67 @@
+import React from 'react';
 import '../styles/SendMail.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { Button } from '@mui/material';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { closeSendMessage } from '../features/counter/mailSlice';
-
-import React from 'react'
-import { collection, addDoc } from 'firebase/firestore';
-import {db} from '../firebase.js';
+import { closeSendMessage } from '../features/mailSlice';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 
 function SendMail() {
-  const { register, handleSubmit, watch, errors } = useForm();
-  // sets up the dispatcher
+
+  const { register, handleSubmit, formState: {errors} } = useForm();
   const dispatch = useDispatch();
-
-  const onSubmit = (formData) => {
-    const colRef = collection(db, 'email')
+  const colRef = collection(db, 'emails');
+  const onSubmit = (data) => {
     addDoc(colRef, {
-      // to: formData.to,
-      // subject: formData.subject,
-      // message: formData.message
-    });
-    // calls the dispatcher to change the state to closed
-    dispatch(closeSendMessage())
-    console.log(formData)
-    console.log(formData.subject);
-  }
-
+      to: data.to,
+      subject: data.subject,
+      message: data.message,
+      timestamp: serverTimestamp(),
+    })
+    dispatch(closeSendMessage());
+  };
+  
   return (
     <div className='send-mail'>
-        <div className="send-mail-header">
-            <h3>New Message</h3>
-            <CloseIcon 
-                  className='send-mail-close'
-                  // calls the closeSendMessage() function through
-                  // the dispattcher to access the state to change the
-                  // state to remove the New Message box
-                  onClick={() => dispatch(closeSendMessage())} 
-            />
+      <div className="send-mail-header">
+        <h3>New Message</h3>
+        <CloseIcon onClick={() => dispatch(closeSendMessage())} className='send-mail-close' />
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input name='to' 
+               placeholder='To' 
+               type="email"
+               {...register("to", {required: "To is required!"})} 
+        />
+        {errors.to && <p className='send-mail-error'>To is required</p>}
+        <input name='subject' 
+               placeholder='Subject' 
+               type="text"
+               {...register("subject", {required: "Subject is required!"})} 
+        />
+        {errors.subject && <p className='send-mail-error'>Subject is required</p>}
+        <input name='message' 
+               placeholder='Message' 
+               type="text" 
+               className='send-mail-message'
+               {...register("message", {required: "Message is required!"})} 
+        />
+        {errors.message && <p className='send-mail-error'>Message is required</p>}
+        <div className="send-mail-options">
+          <Button className='send-mail-send'
+                  variant='container'
+                  color='primary'
+                  type='submit'
+          >
+            Send
+          </Button>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input name='to' placeholder='To' type="email" />
-            <input name='subject' placeholder='Subject' type="text" />
-            <input name='message' placeholder='Message' type="text" className='send-mail-message' />
-            <div className="send-mail-options">
-                <Button 
-                    className='send-mail-send'
-                    variant='contained'
-                    color='primary'
-                    type='submit'
-                >
-                  Send
-                </Button>
-            </div>
-        </form>
+      </form>
     </div>
   )
 }
 
-export default SendMail
+export default SendMail;

@@ -6,8 +6,23 @@ import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AppsIcon from '@mui/icons-material/Apps';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/userSlice';
 
 function Header() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const exitAccount = () => {
+    signOut(auth).then(() => {
+      dispatch(logout())
+    })
+  }
+
   return (
     <div className='header'>
         {/* menu icon and logo */}
@@ -36,8 +51,7 @@ function Header() {
           <IconButton>
             <NotificationsIcon />
           </IconButton>
-          <Avatar />
-
+          <Avatar onClick={exitAccount} src={user?.photoURL}/>
         </div>
     </div>
   )

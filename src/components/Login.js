@@ -3,31 +3,40 @@ import '../styles/Login.css';
 import { Button } from '@mui/material';
 import { auth, provider } from '../firebase.js';
 import { signInWithPopup } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { login } from '../features/userSlice';
+import logo from '../logo.png';
 
-function login() {
+function Login() {
+  const dispatch = useDispatch();
   const signIn = () => {
       signInWithPopup(auth, provider).then(({user}) => {
-          console.log(user);
-      })
+          dispatch(login({
+            displayName: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL
+          }))
+      }).catch(error => alert(error.message))
   }
   return (
     <div className='login'>
         <div className="login-container">
             <img 
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png'
+              src={logo}
               alt=''
             />
             <Button 
               variant='contained' 
               onClick={signIn}
-              color='primary'>
+              color='primary'
+              size='medium'
+              className='login-button'
+            >
                 Login
             </Button>
-            
-
         </div>
     </div>
   )
 }
 
-export default login
+export default Login

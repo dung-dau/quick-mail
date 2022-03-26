@@ -30,3 +30,17 @@
     background-color: white;
     z-index: 999;
 }
+
+.email-list-list {
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .email-list-settings {
+        display: none;
+    }
+    
+    .email-list-sections {
+        display: none;
+    }
+}

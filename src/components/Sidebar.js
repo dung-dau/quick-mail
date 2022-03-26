@@ -15,7 +15,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import DuoIcon from '@mui/icons-material/Duo';
 import PhoneIcon from '@mui/icons-material/Phone';
 import { useDispatch } from 'react-redux';
-import { openSendMessage } from '../features/counter/mailSlice';
+import { openSendMessage } from '../features/mailSlice';
 
 function Sidebar() {
   // the dispatcher that allows the component to access the 

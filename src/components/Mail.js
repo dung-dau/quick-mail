@@ -14,10 +14,13 @@ import PrintIcon from '@mui/icons-material/Print';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { IconButton } from '@mui/material';
 import { useNavigate } from 'react-router';
+import { selectOpenMail } from '../features/mailSlice';
+import { useSelector } from 'react-redux';
 
 // To view the actual mail
 function Mail() {
   const navigate = useNavigate();
+  const selectedMail = useSelector(selectOpenMail)
   return (
     <div className='mail'>
       {/* contains the tool bar for the mail */}
@@ -79,14 +82,14 @@ function Mail() {
       <div className="mail-body">
         {/* the header contains the subject, title and time */}
         <div className="mail-body-header">
-          <h2>Subject</h2>
+          <h2>{selectedMail?.subject}</h2>
           <LabelImportantIcon className='mail-important'/>
-          <p>Title</p>
-          <p className='mail-time'>10pm</p>
+          <p>{selectedMail?.title}</p>
+          <p className='mail-time'>{selectedMail?.time}</p>
         </div>
         {/* contains the message */}
         <div className="mail-message">
-          <p>This is a message</p>
+          <p>{selectedMail?.description}</p>
         </div>
       </div>
     </div>

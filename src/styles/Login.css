@@ -8,10 +8,16 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    
 }
 
 .login-container > img {
     object-fit: contain;
     height: 200px;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    background-color: #0067b1;
+    width: 70%;
+    align-self: center;
 }

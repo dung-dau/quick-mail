@@ -66,3 +66,17 @@
     /* prevents the avatar from touching the very right of the screen */
     padding-right: 20px;
 }
+
+.MuiAvatar-root {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .header-left > img {
+        display: none;
+    }
+
+    .header-middle > input {
+        text-overflow: ellipsis;
+    }
+}
