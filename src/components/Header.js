@@ -12,6 +12,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { logout } from '../features/userSlice';
+import logo from '../logo.png';
 
 function Header() {
   const user = useSelector(selectUser);
@@ -31,7 +32,7 @@ function Header() {
           <IconButton>
             <MenuIcon />
           </IconButton>
-          <img src='https://images.macrumors.com/t/QY0KdwbObUzURWrw5C2buSSZseY=/400x0/article-new/2020/10/newgmaillogo.0.jpg?lossy' 
+          <img src={logo} 
                alt=''
           />
         </div>
