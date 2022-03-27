@@ -27,7 +27,7 @@ function EmailList() {
       id: doc.id,
       data: doc.data(),
     }))))
-  })
+  }, [colRef, starred])
   return (
     <div className='email-list'>
       <div className="email-list-settings">
