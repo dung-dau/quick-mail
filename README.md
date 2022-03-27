@@ -18,5 +18,5 @@ Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## Known Issues
-Clicking "Starred" immediately after starring 1 or more emails will cause the page to be unresponsive for about 30-60 seconds 
-due to the fact that the code for updating data in the Firebase Firestore database is being run
+Clicking "Starred" immediately after starring/unstarring 1 or more emails will cause the page to be unresponsive for about 
+30-60 seconds due to the fact that the code for updating data in the Firebase Firestore database is being run
