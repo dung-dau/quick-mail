@@ -40,13 +40,6 @@ function Sidebar() {
                      number={54}
                      selected={true}
       />
-      {/* starred to More button on the sidebar */}
-      <SidebarOption Icon={StarIcon} title='Starred' number={54}/>
-      <SidebarOption Icon={AccessTimeIcon} title='Snoozed' number={54}/>
-      <SidebarOption Icon={LabelImportantIcon} title='Important' number={54}/>
-      <SidebarOption Icon={NearMeIcon} title='Sent' number={54}/>
-      <SidebarOption Icon={NoteIcon} title='Drafts' number={54}/>
-      <SidebarOption Icon={ExpandMoreIcon} title='More' number={54}/>
 
       {/* bottom 3 icons underneath the sidebar */}
       <div className='sidebar-footer'>
