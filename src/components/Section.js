@@ -15,7 +15,7 @@ function Section({ Icon, title, color, selected }) {
            color: `${selected && color}`,
         }}
     >
-        <Icon />
+        {Icon && <Icon />}
         <h4>{title}</h4>
     </div>
   );

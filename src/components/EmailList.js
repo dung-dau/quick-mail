@@ -8,25 +8,26 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import KeyboardHideIcon from '@mui/icons-material/KeyboardHide';
 import SettingsIcon from '@mui/icons-material/Settings';
-import InboxIcon from '@mui/icons-material/Inbox';
-import PeopleIcon from '@mui/icons-material/People';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Section from './Section';
 import EmailRow from './EmailRow';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useSelector } from 'react-redux';
+import { selectStarred } from '../features/starredSlice';
 
 function EmailList() {
   const [emails, setEmails] = useState([]);
   const colRef = collection(db, 'emails');
+  const starred = useSelector(selectStarred);
 
   useEffect(() => {
     const q = query(colRef, orderBy('timestamp', 'desc'));
-    onSnapshot(q, (snapshot) => setEmails(snapshot.docs.map((doc) => ({
+    const starredQ = query(colRef, where('starred', '==', true), orderBy('timestamp', 'desc')); 
+    onSnapshot((starred?starredQ:q), (snapshot) => setEmails(snapshot.docs.map((doc) => ({
       id: doc.id,
       data: doc.data(),
     }))))
-  }, [])
+  })
   return (
     <div className='email-list'>
       <div className="email-list-settings">
@@ -61,27 +62,20 @@ function EmailList() {
       </div>
       {/* Primary, Social and Promotions section */}
       <div className="email-list-sections">
-        <Section Icon={InboxIcon} 
+        <Section 
                  title='Primary' 
                  color='red' 
                  selected
         />
-        <Section Icon={PeopleIcon} 
-                 title='Social' 
-                 color='#1A73E8' 
-        />
-        <Section Icon={LocalOfferIcon} 
-                 title='Promotions' 
-                 color='green' 
-        />
       </div>
       <div className="email-list-list">
-        {emails.map(({id, data: { to, subject, message, timestamp }}) => (
+        {emails.map(({id, data: { to, subject, message, starred,timestamp }}) => (
           <EmailRow 
             id={id}
             key={id}
             title={to}
             subject={subject}
+            starred={starred}
             description={message}
             time={new Date(timestamp?.seconds * 1000).toDateString()}
           />

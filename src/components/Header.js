@@ -13,6 +13,7 @@ import { auth } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { logout } from '../features/userSlice';
 import logo from '../logo.png';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 function Header() {
   const user = useSelector(selectUser);
@@ -52,7 +53,10 @@ function Header() {
           <IconButton>
             <NotificationsIcon />
           </IconButton>
-          <Avatar onClick={exitAccount} src={user?.photoURL}/>
+          <IconButton onClick={exitAccount}>
+            <PowerSettingsNewIcon />
+          </IconButton>
+          <Avatar src={user?.photoURL}/>
         </div>
     </div>
   )

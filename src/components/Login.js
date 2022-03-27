@@ -32,7 +32,7 @@ function Login() {
               size='medium'
               className='login-button'
             >
-                Login
+                Login With Google
             </Button>
         </div>
     </div>

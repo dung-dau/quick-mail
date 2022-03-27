@@ -18,6 +18,7 @@ function SendMail() {
       to: data.to,
       subject: data.subject,
       message: data.message,
+      starred: false,
       timestamp: serverTimestamp(),
     })
     dispatch(closeSendMessage());

@@ -14,8 +14,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PersonIcon from '@mui/icons-material/Person';
 import DuoIcon from '@mui/icons-material/Duo';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openSendMessage } from '../features/mailSlice';
+import { selectStarred, toggleStarred } from '../features/starredSlice';
 
 function Sidebar() {
   // the dispatcher that allows the component to access the 
@@ -40,6 +41,14 @@ function Sidebar() {
                      number={54}
                      selected={true}
       />
+      <Button startIcon={<StarIcon/>}
+              onClick={() => {
+                dispatch(toggleStarred())
+              }}
+              
+      >
+        Starred
+      </Button>
 
       {/* bottom 3 icons underneath the sidebar */}
       <div className='sidebar-footer'>
