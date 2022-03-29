@@ -11,7 +11,7 @@ A live demo can be found at: https://mail-app-d6bd1.web.app/
 ![smail-mail-main](https://user-images.githubusercontent.com/55113973/160685317-7c780a9f-487a-4eab-ad41-1d37001647c9.png)
 
 ## Responsive Mobile Pages
-![snail-mail-mobile-login](https://user-images.githubusercontent.com/55113973/160688451-fcee0195-e669-4b2e-8e0c-6db3fed5ff5c.png)  
+![snail-mail-mobile-login](https://user-images.githubusercontent.com/55113973/160688451-fcee0195-e669-4b2e-8e0c-6db3fed5ff5c.png) 
 ![snail-mail-mobile](https://user-images.githubusercontent.com/55113973/160686501-ff841d12-1f82-4f2e-bc1e-477e3457bf39.png)
 
 ## Installation Instructions
