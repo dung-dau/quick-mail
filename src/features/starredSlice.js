@@ -9,10 +9,16 @@ export const starredSlice = createSlice({
         toggleStarred: state => {
             state.selected = !state.selected;
         },
+        setStarredTrue: state => {
+            state.selected = true
+        },
+        setStarredFalse: state => {
+            state.selected = false
+        },
     },
 });
 
-export const { toggleStarred } = starredSlice.actions;
+export const { toggleStarred, setStarredTrue, setStarredFalse } = starredSlice.actions;
 
 export const selectStarred = (state) => state.starred.selected;
 
