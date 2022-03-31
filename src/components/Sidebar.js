@@ -8,7 +8,7 @@ import StarIcon from '@mui/icons-material/Star';
 import PersonIcon from '@mui/icons-material/Person';
 import DuoIcon from '@mui/icons-material/Duo';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { openSendMessage } from '../features/mailSlice';
 import { setStarredTrue, setStarredFalse } from '../features/starredSlice';
 

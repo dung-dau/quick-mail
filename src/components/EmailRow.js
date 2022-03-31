@@ -1,15 +1,13 @@
-import LabelImportantOutlinedIcon  from '@mui/icons-material/LabelImportantOutlined';
-import { IconButton, Checkbox } from '@mui/material'
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { Checkbox } from '@mui/material'
 import React from 'react';
 import '../styles/EmailRow.css';
 import {useNavigate} from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { selectMail } from '../features/mailSlice';
-import { useState, setState } from 'react';
+import { useState } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import StarIcon from '@mui/icons-material/Star';
-import { getDocFromCache, onSnapshot, updateDoc } from 'firebase/firestore';
+import { updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { doc } from 'firebase/firestore';
 
