@@ -17,7 +17,7 @@ A live demo can be found at: https://mail-app-d6bd1.web.app/
 ## Installation Instructions
 Run the following commands: <br/><br/>
 `git clone https://github.com/dung-dau/mail-app.git` <br/><br/>
-`cd mail-app` <br/><br/>
+`cd quick-mail` <br/><br/>
 `npm install` <br/><br/>
 `npm run start` <br/><br/>
 Unless a port is specified or if port 3000 is already being used by another applcation, <br />
