@@ -1,4 +1,4 @@
-### Snail Mail
+### Quick Mail
 A mailing app that allows users to compose and send emails created with HTML, CSS, React and Firebase
 
 ## Demo
